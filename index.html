@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SheCodes</title>
+    <link rel="stylesheet" href="src\styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/153cd37235.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="search">
+        <form id = "search-city">
+          <input type="text" placeholder="Search.." name="search" id = "input-city" >
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <button id = "btn-current-city"><i class="fa">Current</i></button>
+      </div>  
+      <div class="current">
+        <div class="current-city">
+          <span id="current-city">-</span></br><i class="fa-solid fa-cloud"></i>
+          <div class="current-date">February 24, 2023</div>
+          <div class="current-time">Tuesday 15:03</div>
+        </div>
+        <div class="current-temperature">
+          <span id="current-temp">-</span>°
+          <div class="cf"><a href="#" id = "celsius">C°</a>|<a href="#" id = "farenheit">F°</a></div>
+          <div class="current-min-max">Min/max temp: -2°/4°</div>
+        </div>
+      </div>
+      <div class="next">
+        <span class="date">
+          Feb 25</br><i class="fa-solid fa-snowflake"></i></br>-1°
+        </span>
+        <span class="date"> 
+          Feb 26</br><i class="fa-solid fa-smog"></i></br>0°
+        </span>
+        <span class="date">
+          Feb 27</br><i class="fa-solid fa-cloud-meatball"></i></br>-1°
+        </span>
+        <span class="date">
+          Feb 28</br><i class="fa-solid fa-cloud"></i></br>1°
+        </span>
+        <span class="date">
+          March 1</br> <i class="fa-solid fa-cloud-sun"></i></br>3°
+        </span>
+      </div>
+    </div>
+    <script src="src/index.js">
+    </script>
+  </body>
+</html>
