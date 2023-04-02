@@ -68,4 +68,6 @@ body {
     margin-bottom: 20px;
     opacity: 0.2;
   }
-  
+.course-code-link {
+    color:#40434d;
+}
