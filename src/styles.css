@@ -38,8 +38,13 @@ body {
   .current-date,
   .current-time,
   .cf,
-  .current-min-max {
+  .current-min-max,
+  .current-hum-wind,
+  .description {
     font-size: 1.1rem;
+  }
+  .description {
+    text-transform: capitalize;
   }
   
   .date {

@@ -45,6 +45,13 @@ function showCurrentTime() {
     let temperature = Math.round(responce.data.main.temp);
     let currentTemp = document.querySelector("#current-temp");
     currentTemp.innerHTML = temperature;
+
+    console.log(responce.data);
+    console.log(responce.data.weather[0].description);
+    let description = responce.data.weather[0].description;
+    let currentDescription = document.querySelector(".description");
+    currentDescription.innerHTML = description; 
+
   }
   
   function getGeoCoords(position) {
