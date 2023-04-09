@@ -99,7 +99,10 @@ function setCurrentData() {
     let currentTime = document.querySelector(".current-time");
     currentTime.innerHTML = formatDate(responce.data.dt * 1000);
 
-
+    let icon = document.querySelector("#icon");
+    icon.setAttribute("src", `https://openweathermap.org/img/wn/${responce.data.weather[0].icon}@2x.png`);
+ 
+    icon.setAttribute("alt", responce.data.weather[0].description);
   }
   
   function getGeoCoords(position) {
