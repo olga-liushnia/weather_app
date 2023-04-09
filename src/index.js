@@ -2,7 +2,7 @@
 function setCurrentData() {
   navigator.geolocation.getCurrentPosition(getGeoCoords);
 }
-  setCurrentData();
+ 
   
   function getCity(event) {
     event.preventDefault();
@@ -88,15 +88,6 @@ function setCurrentData() {
   }
   
   
-  
-  let city = document.querySelector("#search-city");
-  city.addEventListener("submit", getCity);
-  
-  let currentCity = document.querySelector("#btn-current-city");
-  currentCity.addEventListener("click", setCurrentData);
-  
-
-  
   function toFarenheit(event) {
     event.preventDefault();
     let f = (celsiusValue * 9) / 5 +32;
@@ -111,7 +102,11 @@ function setCurrentData() {
     currentTemp.innerHTML = Math.round(celsiusValue);
   }
 
-
+  let city = document.querySelector("#search-city");
+  city.addEventListener("submit", getCity);
+  
+  let currentCity = document.querySelector("#btn-current-city");
+  currentCity.addEventListener("click", setCurrentData);
   
   let farenheit = document.querySelector("#farenheit");
   farenheit.addEventListener("click", toFarenheit);
@@ -121,4 +116,4 @@ function setCurrentData() {
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", toCelsius);
   
-  
+  setCurrentData();
