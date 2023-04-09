@@ -43,7 +43,7 @@ body {
   .description {
     font-size: 1.1rem;
   }
-  .description {
+  .description:first-letter {
     text-transform: capitalize;
   }
   

@@ -1,4 +1,4 @@
-function showCurrentTime() {
+/*function showCurrentTime() {
     let currentTime = new Date();
   
     let days = [
@@ -26,6 +26,10 @@ function showCurrentTime() {
   
   let currentTime = document.querySelector(".current-time");
   currentTime.innerHTML = showCurrentTime(new Date());
+*/
+function setCurrentData() {
+  navigator.geolocation.getCurrentPosition(getGeoCoords);
+}
   setCurrentData();
   
   //part2
@@ -39,14 +43,39 @@ function showCurrentTime() {
     let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiLink).then(showTemp);
   }
+
+  function formatDate (timestamp) {
+   let date = new Date(timestamp);
+   let hours = date.getHours();
+   if (hours<10) {
+    hours = `0${hours}`;
+   }
+   let minutes = date.getMinutes();
+   if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+   let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thurthday",
+    "Friday",
+    "Saturday"
+  ];
+  let day = days[date.getDay()];
+   
+   return `${day} ${hours}:${minutes}`;
+  
+
+  }
+
   function showTemp(responce) {
     let currentCity = document.querySelector("#current-city");
     currentCity.innerHTML = responce.data.name;
     let temperature = Math.round(responce.data.main.temp);
     let currentTemp = document.querySelector("#current-temp");
     currentTemp.innerHTML = temperature;
-
-    console.log(responce.data);
 
     let description = responce.data.weather[0].description;
     let currentDescription = document.querySelector(".description");
@@ -66,6 +95,10 @@ function showCurrentTime() {
     let wind = Math.round(responce.data.wind.speed);
     let currentWind = document.querySelector("#wind");
     currentWind.innerHTML = wind;
+    
+    let currentTime = document.querySelector(".current-time");
+    currentTime.innerHTML = formatDate(responce.data.dt * 1000);
+
 
   }
   
@@ -78,9 +111,7 @@ function showCurrentTime() {
     axios.get(apiLink).then(showTemp);
   }
   
-  function setCurrentData() {
-    navigator.geolocation.getCurrentPosition(getGeoCoords);
-  }
+  
   
   let city = document.querySelector("#search-city");
   city.addEventListener("submit", getCity);
@@ -109,4 +140,4 @@ function showCurrentTime() {
   celsius.addEventListener("click", toCelsius);
   */
   
-  //week5hw
+  
