@@ -47,10 +47,25 @@ function showCurrentTime() {
     currentTemp.innerHTML = temperature;
 
     console.log(responce.data);
-    console.log(responce.data.weather[0].description);
+
     let description = responce.data.weather[0].description;
     let currentDescription = document.querySelector(".description");
     currentDescription.innerHTML = description; 
+
+    let tempMax = Math.round(responce.data.main.temp_max);
+    let currentTempMax = document.querySelector("#max-temp");
+    currentTempMax.innerHTML = tempMax;
+    let tempMin = Math.round(responce.data.main.temp_min);
+    let currentTempMin = document.querySelector("#min-temp");
+    currentTempMin.innerHTML = tempMin;
+
+    let humidity = responce.data.main.humidity;
+    let currentHumidity = document.querySelector("#humidity");
+    currentHumidity.innerHTML = humidity;
+    
+    let wind = Math.round(responce.data.wind.speed);
+    let currentWind = document.querySelector("#wind");
+    currentWind.innerHTML = wind;
 
   }
   
