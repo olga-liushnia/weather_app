@@ -1,38 +1,9 @@
-/*function showCurrentTime() {
-    let currentTime = new Date();
-  
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thurthday",
-      "Friday",
-      "Saturday"
-    ];
-  
-    let day = days[currentTime.getDay()];
-    let hour = currentTime.getHours();
-    if (hour < 10) {
-      hour = `0${hour}`;
-    }
-    let minute = currentTime.getMinutes();
-    if (minute < 10) {
-      minute = `0${minute}`;
-    }
-    let formatedTime = `${day} ${hour}:${minute}`;
-    return formatedTime;
-  }
-  
-  let currentTime = document.querySelector(".current-time");
-  currentTime.innerHTML = showCurrentTime(new Date());
-*/
+
 function setCurrentData() {
   navigator.geolocation.getCurrentPosition(getGeoCoords);
 }
   setCurrentData();
   
-  //part2
   function getCity(event) {
     event.preventDefault();
     let inputCity = document.querySelector("#input-city");
@@ -99,6 +70,8 @@ function setCurrentData() {
     let currentTime = document.querySelector(".current-time");
     currentTime.innerHTML = formatDate(responce.data.dt * 1000);
 
+    celsiusValue = responce.data.main.temp;
+
     let icon = document.querySelector("#icon");
     icon.setAttribute("src", `https://openweathermap.org/img/wn/${responce.data.weather[0].icon}@2x.png`);
  
@@ -122,25 +95,30 @@ function setCurrentData() {
   let currentCity = document.querySelector("#btn-current-city");
   currentCity.addEventListener("click", setCurrentData);
   
-  /*part3
+
   
-  function toFarenheit() {
-    let f = 3 * 1.8 + 32;
+  function toFarenheit(event) {
+    event.preventDefault();
+    let f = (celsiusValue * 9) / 5 +32;
     let fRounded = Math.round(f);
     let currentTemp = document.querySelector("#current-temp");
     currentTemp.innerHTML = fRounded;
   }
   
-  function toCelsius() {
+  function toCelsius(event) {
+    event.preventDefault();
     let currentTemp = document.querySelector("#current-temp");
-    currentTemp.innerHTML = 3;
+    currentTemp.innerHTML = Math.round(celsiusValue);
   }
+
+
   
   let farenheit = document.querySelector("#farenheit");
   farenheit.addEventListener("click", toFarenheit);
   
+  let celsiusValue = null;
+  
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", toCelsius);
-  */
   
   
