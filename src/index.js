@@ -37,8 +37,6 @@ function setCurrentData() {
   let day = days[date.getDay()];
    
    return `${day} ${hours}:${minutes}`;
-  
-
   }
 
   function showTemp(responce) {
@@ -102,6 +100,26 @@ function setCurrentData() {
     currentTemp.innerHTML = Math.round(celsiusValue);
   }
 
+  function showForecast () {
+    let forecastDay = document.querySelector("#forecast");
+    
+    let forecastHTML = "";
+    let days = ["Mon", "Tue", "Wed"];
+    days.forEach(function (day) {
+      forecastHTML = forecastHTML + `
+      <span class="date">
+      <div id="next-date">${day}</div>
+      <i class="fa-solid fa-snowflake"></i></br>
+      <span id="next-temperature-min">-1</span>°/
+      <span id="next-temperature-max">1</span>°
+      </span>`
+      ;
+    });
+    
+    forecastDay.innerHTML = forecastHTML;
+    
+  }
+
   let city = document.querySelector("#search-city");
   city.addEventListener("submit", getCity);
   
@@ -117,3 +135,5 @@ function setCurrentData() {
   celsius.addEventListener("click", toCelsius);
   
   setCurrentData();
+
+  showForecast ();
