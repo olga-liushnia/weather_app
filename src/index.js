@@ -74,15 +74,25 @@ function setCurrentData() {
     icon.setAttribute("src", `https://openweathermap.org/img/wn/${responce.data.weather[0].icon}@2x.png`);
  
     icon.setAttribute("alt", responce.data.weather[0].description);
+    
+    let longitude = responce.data.coord.lon;
+    let latitude = responce.data.coord.lat;
+    let apiKey = "62231151ce343c4d68652e1617efc22f";
+    let unit = "metric";
+    let apiLink = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiLink).then(showForecast);
+
   }
   
   function getGeoCoords(position) {
     let latitude = position.coords.latitude;
   
     let longitude = position.coords.longitude;
+
+    let apiKey = "62231151ce343c4d68652e1617efc22f";
   
-    let apiLink = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=62231151ce343c4d68652e1617efc22f`;
-    axios.get(apiLink).then(showTemp);
+    let apiLinkCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    axios.get(apiLinkCurrent).then(showTemp);
   }
   
   
@@ -135,5 +145,3 @@ function setCurrentData() {
   celsius.addEventListener("click", toCelsius);
   
   setCurrentData();
-
-  showForecast ();
