@@ -50,12 +50,12 @@ function setCurrentData() {
     let currentDescription = document.querySelector(".description");
     currentDescription.innerHTML = description; 
 
-    let tempMax = Math.round(responce.data.main.temp_max);
+    /*let tempMax = Math.round(responce.data.main.temp_max);
     let currentTempMax = document.querySelector("#max-temp");
     currentTempMax.innerHTML = tempMax;
     let tempMin = Math.round(responce.data.main.temp_min);
     let currentTempMin = document.querySelector("#min-temp");
-    currentTempMin.innerHTML = tempMin;
+    currentTempMin.innerHTML = tempMin;*/
 
     let humidity = responce.data.main.humidity;
     let currentHumidity = document.querySelector("#humidity");
@@ -134,7 +134,7 @@ function formatDay (timestamp) {
     let forecastHTML = "";
    
     forecastData.forEach(function (forecastDay, index) {
-      if (index < 5) {
+      if (index < 6) {
      
       forecastHTML = forecastHTML + `
       <span class="date">
@@ -156,12 +156,12 @@ function formatDay (timestamp) {
   let currentCity = document.querySelector("#btn-current-city");
   currentCity.addEventListener("click", setCurrentData);
   
-  let farenheit = document.querySelector("#farenheit");
+  /*let farenheit = document.querySelector("#farenheit");
   farenheit.addEventListener("click", toFarenheit);
   
   let celsiusValue = null;
   
   let celsius = document.querySelector("#celsius");
-  celsius.addEventListener("click", toCelsius);
+  celsius.addEventListener("click", toCelsius);*/
   
   setCurrentData();
