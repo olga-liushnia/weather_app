@@ -109,26 +109,46 @@ function setCurrentData() {
     let currentTemp = document.querySelector("#current-temp");
     currentTemp.innerHTML = Math.round(celsiusValue);
   }
+  
+function formatDay (timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+  ];
+   return days[day];
+}
 
-  function showForecast () {
-    let forecastDay = document.querySelector("#forecast");
+  function showForecast (responce) {
+    
+    let forecastElement = document.querySelector("#forecast");
+    
+    let forecastData = responce.data.daily;
     
     let forecastHTML = "";
-    let days = ["Mon", "Tue", "Wed"];
-    days.forEach(function (day) {
+   
+    forecastData.forEach(function (forecastDay, index) {
+      if (index < 5) {
+     
       forecastHTML = forecastHTML + `
       <span class="date">
-      <div id="next-date">${day}</div>
-      <i class="fa-solid fa-snowflake"></i></br>
-      <span id="next-temperature-min">-1</span>°/
-      <span id="next-temperature-max">1</span>°
+      <div id="next-date">${formatDay(forecastDay.dt)}</div>
+      <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" id="icon" alt=""/></br>
+      <span id="next-temperature-min">${Math.round(forecastDay.temp.min)}</span>°/
+      <span id="next-temperature-max">${Math.round(forecastDay.temp.max)}</span>°
       </span>`
-      ;
-    });
+      ;}
+  });
     
-    forecastDay.innerHTML = forecastHTML;
-    
-  }
+    forecastElement.innerHTML = forecastHTML;
+    }
+  
 
   let city = document.querySelector("#search-city");
   city.addEventListener("submit", getCity);
